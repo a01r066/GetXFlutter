@@ -4,7 +4,7 @@ class GridItemWidget extends StatelessWidget {
   final String subject;
   Function()? tapAction;
 
-  GridItemWidget({required this.subject });
+  GridItemWidget({required this.subject});
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,17 @@ class GridItemWidget extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                subject,
-                style: TextStyle(
-                    fontSize: 20.0,
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  subject,
+                  style: TextStyle(
+                    fontSize: 16.0,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white),
-                textAlign: TextAlign.center,
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
               ),
             ],
           ),

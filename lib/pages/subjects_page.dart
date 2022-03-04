@@ -3,35 +3,36 @@ import 'package:get/get.dart';
 import 'package:getx_demo/widgets/grid_item_widget.dart';
 
 class SubjectsPage extends StatelessWidget {
-  final snackbar = GridItemWidget(subject: "Snackbar");
-  final dialog = GridItemWidget(
-    subject: "Dialog",
-  );
+  final snackBar = GridItemWidget(subject: "Snackbar");
+  final dialog = GridItemWidget(subject: "Dialog");
+  final bottomSheet = GridItemWidget(subject: "BottomSheet");
 
   // List<Map<GridItemWidget, Widget>> mapItems = [];
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
-    // for (Map<GridItemWidget, Widget> mapItem in mapItems) {
-    //   for (var item in mapItem.entries) {
-    //     item.key.tapAction = () {
-    //       Navigator.push(
-    //           context, MaterialPageRoute(builder: (context) => item.value));
-    //     };
-    //   }
-    // }
-
     // Snackbar
-    snackbar.tapAction = () {
-      showSnackbar();
+    snackBar.tapAction = () {
+      // Flutter snackBar vs GetX snackBar
+      // showFlutterSnackbar();
+      showGetxSnackbar();
     };
 
-    // Dialog
+    // Flutter Dialog vs GetX Dialog
     dialog.tapAction = () {
-      showDialog();
+      // showFlutterDialog(context);
+      showGetXDialog();
+    };
+
+    // Flutter BottomSheet vs GetX BottomSheet
+    bottomSheet.tapAction = () {
+      // showFlutterBottomSheet();
+      showGetXBottomSheet();
     };
 
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         title: Text("GetX Subjects"),
       ),
@@ -42,30 +43,127 @@ class SubjectsPage extends StatelessWidget {
           mainAxisSpacing: 8.0,
           crossAxisSpacing: 8.0,
           children: [
-            snackbar,
+            snackBar,
             dialog,
+            bottomSheet,
           ],
         ),
       ),
     );
   }
 
-  showDialog() {
-    Get.defaultDialog(
-      title: "Are you sure?",
-      content: Text("You're going to delete account!", style: TextStyle(color: Colors.white),),
-      backgroundColor: Colors.redAccent,
-      textCancel: "Back",
-      textConfirm: "OK",
-      onCancel: (){print("Back");},
-      onConfirm: (){print("OK");},
-      cancelTextColor: Colors.white,
-      confirmTextColor: Colors.yellow,
-      barrierDismissible: true,
+  // Flutter BottomSheet
+  showFlutterBottomSheet() {
+    scaffoldKey.currentState?.showBottomSheet(
+      (context) {
+        return Container(
+          width: double.infinity,
+          height: 320.0,
+          decoration: BoxDecoration(
+            color: Colors.greenAccent,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(12.0),
+              topRight: Radius.circular(12.0),
+            ),
+          ),
+          child: Center(
+            child: Text(
+              "Bottomsheet",
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+            ),
+          ),
+        );
+      },
     );
   }
 
-  showSnackbar() {
+  // GetX BottomSheet
+  showGetXBottomSheet() {
+    Get.bottomSheet(
+      SizedBox(
+        height: 320.0,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircularProgressIndicator(),
+              SizedBox(
+                height: 16.0,
+              ),
+              Text("Loading data ..."),
+            ],
+          ),
+        ),
+      ),
+      isDismissible: true, // Dismiss bottom sheet when tap outside
+      backgroundColor: Colors.greenAccent,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(12.0),
+          topRight: Radius.circular(12.0),
+        ),
+      ),
+    );
+  }
+
+  // Flutter Dialog
+  showFlutterDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Text("Flutter dialog!"),
+        );
+      },
+    );
+  }
+
+  // GetX Dialog
+  showGetXDialog() {
+    Get.defaultDialog(
+      title: "Are you sure?",
+      content: Text(
+        "You're going to delete account!",
+        style: TextStyle(color: Colors.deepPurple),
+      ),
+      backgroundColor: Colors.greenAccent,
+      textCancel: "Back",
+      textConfirm: "OK",
+      onCancel: () {
+        print("Back");
+      },
+      onConfirm: () {
+        print("OK");
+      },
+      cancelTextColor: Colors.black,
+      confirmTextColor: Colors.yellow,
+      barrierDismissible: true,
+      buttonColor: Colors.deepPurple,
+    );
+  }
+
+  // Flutter snackBar
+  showFlutterSnackbar() {
+    scaffoldKey.currentState?.showSnackBar(
+      SnackBar(
+        content: Container(
+          height: 96.0,
+          child: Center(
+            child: Text(
+              "Action",
+              style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  // GetX snackBar
+  showGetxSnackbar() {
     Get.snackbar(
       "This is snackbar",
       "GetX Snackbar",
@@ -76,7 +174,7 @@ class SubjectsPage extends StatelessWidget {
         Icons.check,
         color: Colors.greenAccent,
       ),
-      backgroundColor: Colors.deepPurple[700],
+      backgroundColor: Colors.greenAccent[700],
       mainButton: TextButton(
         onPressed: () {},
         child: Container(
@@ -86,7 +184,11 @@ class SubjectsPage extends StatelessWidget {
           ),
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-            child: Text("Action"),
+            child: Text(
+              "Action",
+              style:
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+            ),
           ),
         ),
       ),
