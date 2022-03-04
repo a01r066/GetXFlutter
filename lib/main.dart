@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/pages/cart_page.dart';
 import 'package:getx_demo/pages/navigation_page.dart';
+import 'package:getx_demo/pages/profile_page.dart';
 import 'package:getx_demo/pages/shop_page.dart';
 import 'package:getx_demo/pages/subjects_page.dart';
 
@@ -23,12 +24,13 @@ class MyApp extends StatelessWidget {
       ),
       // home: SubjectsPage(),
       initialRoute: "/home",
-      defaultTransition: Transition.leftToRight,
+      defaultTransition: Transition.rightToLeft,
       getPages: [
         GetPage(name: "/home", page: () => SubjectsPage()),
         GetPage(name: "/shop/:shopID", page: () => ShopPage()),
         GetPage(name: "/cart/:cartID", page: () => CartPage()),
         GetPage(name: "/nav", page: () => NavigationPage()),
+        GetPage(name: "/profile", page: () => Profile()),
       ],
     );
   }

@@ -9,6 +9,7 @@ class SubjectsPage extends StatelessWidget {
   final bottomSheet = GridItemWidget(subject: "BottomSheet");
   final navigation = GridItemWidget(subject: "Navigation");
   final namedRoutes = GridItemWidget(subject: "Navigation with Named Routes");
+  final getBuilderMethod = GridItemWidget(subject: "GetBuilder Method");
 
   // List<Map<GridItemWidget, Widget>> mapItems = [];
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -49,6 +50,11 @@ class SubjectsPage extends StatelessWidget {
       Get.toNamed("/nav");
     };
 
+    // GetX GetBuilder Method
+    getBuilderMethod.tapAction = (){
+      Get.toNamed("/profile");
+    };
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -66,6 +72,7 @@ class SubjectsPage extends StatelessWidget {
             bottomSheet,
             navigation,
             namedRoutes,
+            getBuilderMethod,
           ],
         ),
       ),
