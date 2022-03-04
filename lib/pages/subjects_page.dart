@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/pages/navigation_page.dart';
 import 'package:getx_demo/widgets/grid_item_widget.dart';
 
 class SubjectsPage extends StatelessWidget {
   final snackBar = GridItemWidget(subject: "Snackbar");
   final dialog = GridItemWidget(subject: "Dialog");
   final bottomSheet = GridItemWidget(subject: "BottomSheet");
+  final navigation = GridItemWidget(subject: "Navigation");
 
   // List<Map<GridItemWidget, Widget>> mapItems = [];
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -31,6 +33,16 @@ class SubjectsPage extends StatelessWidget {
       showGetXBottomSheet();
     };
 
+    // GetX navigation
+    navigation.tapAction = () {
+      // Flutter Navigation
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => NavigationPage()));
+
+      // GetX Navigation
+      Get.to(() => NavigationPage(), fullscreenDialog: false);
+    };
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -46,6 +58,7 @@ class SubjectsPage extends StatelessWidget {
             snackBar,
             dialog,
             bottomSheet,
+            navigation,
           ],
         ),
       ),
