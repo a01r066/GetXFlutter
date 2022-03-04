@@ -13,11 +13,13 @@ class CartPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             RaisedButton(onPressed: (){
-              Get.back();
-            }, child: Text("Back of ${Get.arguments}")),
-            RaisedButton(onPressed: (){
-              Get.back();
-            }, child: Text("Back of ${Get.arguments}"),),
+              Get.back(result: "Get.off data returned!");
+            }, child: Column(
+              children: [
+                // Text("Back of ${Get.arguments}"),
+                Text("Back of: ${Get.parameters["cartID"]}")
+              ],
+            )),
           ],
         ),
       ),

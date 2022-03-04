@@ -8,6 +8,7 @@ class SubjectsPage extends StatelessWidget {
   final dialog = GridItemWidget(subject: "Dialog");
   final bottomSheet = GridItemWidget(subject: "BottomSheet");
   final navigation = GridItemWidget(subject: "Navigation");
+  final namedRoutes = GridItemWidget(subject: "Navigation with Named Routes");
 
   // List<Map<GridItemWidget, Widget>> mapItems = [];
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -43,6 +44,11 @@ class SubjectsPage extends StatelessWidget {
       Get.to(() => NavigationPage(), fullscreenDialog: false);
     };
 
+    // GetX Named Routes
+    namedRoutes.tapAction = (){
+      Get.toNamed("/nav");
+    };
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -59,6 +65,7 @@ class SubjectsPage extends StatelessWidget {
             dialog,
             bottomSheet,
             navigation,
+            namedRoutes,
           ],
         ),
       ),
