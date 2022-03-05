@@ -15,20 +15,35 @@ class Profile extends StatelessWidget {
           children: [
             RaisedButton(
               onPressed: () {
-                final status = !mainController.isLoggedIn;
+                final status = !mainController.isLoggedIn.value;
                 mainController.updateStatus(status);
               },
               child: Text("Change login status"),
             ),
-            GetBuilder<MainController>(
-              id: "login_status_widget",
+            // GetBuilder Method
+            // GetBuilder<MainController>(
+            //   id: "login_status_widget",
+            //   builder: (_) {
+            //     print("Login status widget rebuild");
+            //     return Text("isLoggedIn: ${mainController.isLoggedIn}");
+            //   },
+            // ),
+            // GetBuilder<MainController>(
+            //   id: "followers_widget",
+            //   builder: (_) {
+            //     print("Followers widget rebuild");
+            //     return Text("Followers: ${mainController.followers}");
+            //   },
+            // ),
+
+            // GetX Method
+            GetX<MainController>(
               builder: (_) {
                 print("Login status widget rebuild");
                 return Text("isLoggedIn: ${mainController.isLoggedIn}");
               },
             ),
-            GetBuilder<MainController>(
-              id: "followers_widget",
+            GetX<MainController>(
               builder: (_) {
                 print("Followers widget rebuild");
                 return Text("Followers: ${mainController.followers}");
