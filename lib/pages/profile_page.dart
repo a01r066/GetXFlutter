@@ -20,6 +20,7 @@ class Profile extends StatelessWidget {
               },
               child: Text("Change login status"),
             ),
+
             // GetBuilder Method
             // GetBuilder<MainController>(
             //   id: "login_status_widget",
@@ -37,18 +38,28 @@ class Profile extends StatelessWidget {
             // ),
 
             // GetX Method
-            GetX<MainController>(
-              builder: (_) {
-                print("Login status widget rebuild");
-                return Text("isLoggedIn: ${mainController.isLoggedIn}");
-              },
-            ),
-            GetX<MainController>(
-              builder: (_) {
-                print("Followers widget rebuild");
-                return Text("Followers: ${mainController.followers}");
-              },
-            ),
+            // GetX<MainController>(
+            //   builder: (_) {
+            //     print("Login status widget rebuild");
+            //     return Text("isLoggedIn: ${mainController.isLoggedIn}");
+            //   },
+            // ),
+            // GetX<MainController>(
+            //   builder: (_) {
+            //     print("Followers widget rebuild");
+            //     return Text("Followers: ${mainController.followers}");
+            //   },
+            // ),
+
+            // Obx Method
+            Obx(() {
+              print("Login status widget rebuild");
+              return Text("isLoggedIn: ${mainController.isLoggedIn}");
+            }),
+            Obx(() {
+              print("Followers widget rebuild");
+              return Text("Followers: ${mainController.followers}");
+            }),
           ],
         ),
       ),
