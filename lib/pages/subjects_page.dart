@@ -9,7 +9,7 @@ class SubjectsPage extends StatelessWidget {
   final bottomSheet = GridItemWidget(subject: "BottomSheet");
   final navigation = GridItemWidget(subject: "Navigation");
   final namedRoutes = GridItemWidget(subject: "Navigation with Named Routes");
-  final getBuilderMethod = GridItemWidget(subject: "GetBuilder Method");
+  final getBuilderMethod = GridItemWidget(subject: "GetBuilder Method with Unique Id");
 
   // List<Map<GridItemWidget, Widget>> mapItems = [];
   final scaffoldKey = GlobalKey<ScaffoldState>();

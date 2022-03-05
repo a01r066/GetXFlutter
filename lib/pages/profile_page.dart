@@ -21,8 +21,17 @@ class Profile extends StatelessWidget {
               child: Text("Change login status"),
             ),
             GetBuilder<MainController>(
+              id: "login_status_widget",
               builder: (_) {
+                print("Login status widget rebuild");
                 return Text("isLoggedIn: ${mainController.isLoggedIn}");
+              },
+            ),
+            GetBuilder<MainController>(
+              id: "followers_widget",
+              builder: (_) {
+                print("Followers widget rebuild");
+                return Text("Followers: ${mainController.followers}");
               },
             ),
           ],
