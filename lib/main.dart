@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/bindings/main_binding.dart';
+import 'package:getx_demo/pages/cart_get_widget_page.dart';
 import 'package:getx_demo/pages/cart_page.dart';
 import 'package:getx_demo/pages/dependency_page.dart';
 import 'package:getx_demo/pages/navigation_page.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/nav", page: () => NavigationPage()),
         GetPage(name: "/profile", page: () => Profile()),
         GetPage(name: "/dependency", page: () => DependencyPage()),
+        GetPage(name: "/cart-get-widget", page: () => CartGetWidgetPage()),
       ],
     );
   }

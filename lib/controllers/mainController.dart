@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class MainController extends GetxController {
   // bool isLoggedIn = false;
   var isLoggedIn = false.obs;
-  var followers = 0.obs;
+  var followers = 50.obs;
 
   // GetX Workers
   @override

@@ -13,6 +13,7 @@ class SubjectsPage extends StatelessWidget {
   final getBuilderMethod = GridItemWidget(subject: "3. State Management\n3.1 GetBuilder\n3.2 GetX\n3.3 Obx\n 3.4 GetX Workers");
   final dependencyInjection = GridItemWidget(subject: "4. Dependency Injection\n4.1 Get.put & Get.find");
   final bindings = GridItemWidget(subject: "4.2 Bindings");
+  final lazyPutNGetWidget = GridItemWidget(subject: "4.3 LazyPut & GetWidget");
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -71,6 +72,10 @@ class SubjectsPage extends StatelessWidget {
       Get.toNamed("/dependency");
     };
 
+    lazyPutNGetWidget.tapAction = (){
+      Get.toNamed("/cart-get-widget");
+    };
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -91,6 +96,7 @@ class SubjectsPage extends StatelessWidget {
             getBuilderMethod,
             dependencyInjection,
             bindings,
+            lazyPutNGetWidget,
           ],
         ),
       ),
