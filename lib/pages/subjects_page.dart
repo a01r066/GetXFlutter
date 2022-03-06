@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/controllers/mainController.dart';
 import 'package:getx_demo/pages/navigation_page.dart';
 import 'package:getx_demo/widgets/grid_item_widget.dart';
 
 class SubjectsPage extends StatelessWidget {
-  final snackBar = GridItemWidget(subject: "Snackbar");
-  final dialog = GridItemWidget(subject: "Dialog");
-  final bottomSheet = GridItemWidget(subject: "BottomSheet");
-  final navigation = GridItemWidget(subject: "Navigation");
-  final namedRoutes = GridItemWidget(subject: "Navigation with Named Routes");
-  final getBuilderMethod = GridItemWidget(subject: "GetBuilder Method with Unique Id");
+  final snackBar = GridItemWidget(subject: "1.1 Snackbar");
+  final dialog = GridItemWidget(subject: "1.2 Dialog");
+  final bottomSheet = GridItemWidget(subject: "1.3 BottomSheet");
+  final navigation = GridItemWidget(subject: "2.1 GetX Navigation");
+  final namedRoutes = GridItemWidget(subject: "2.2 Navigation with Named Routes");
+  final getBuilderMethod = GridItemWidget(subject: "3. State Management\n3.1 GetBuilder\n3.2 GetX\n3.3 Obx\n 3.4 GetX Workers");
+  final dependencyInjection = GridItemWidget(subject: "4. Dependency Injection\n4.1 Get.put & Get.find");
+  final bindings = GridItemWidget(subject: "4.2 Bindings");
 
-  // List<Map<GridItemWidget, Widget>> mapItems = [];
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -55,6 +57,20 @@ class SubjectsPage extends StatelessWidget {
       Get.toNamed("/profile");
     };
 
+    // Dependency injection
+    // Get.put makes the dependency available to all the child routes
+    // permanent: true - the dependencies will be kept in memory for the entry app session
+    // permanent: false - the dependencies will be deleted if the route using the Get.put is removed from the navigation stack
+    // MainController mainController = Get.put(MainController(), permanent: true);
+    final mainController = Get.find<MainController>();
+    dependencyInjection.tapAction = (){
+      Get.toNamed("/dependency");
+    };
+
+    bindings.tapAction = (){
+      Get.toNamed("/dependency");
+    };
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -63,7 +79,7 @@ class SubjectsPage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(8.0),
         child: GridView.count(
-          crossAxisCount: 3,
+          crossAxisCount: 2,
           mainAxisSpacing: 8.0,
           crossAxisSpacing: 8.0,
           children: [
@@ -73,6 +89,8 @@ class SubjectsPage extends StatelessWidget {
             navigation,
             namedRoutes,
             getBuilderMethod,
+            dependencyInjection,
+            bindings,
           ],
         ),
       ),
