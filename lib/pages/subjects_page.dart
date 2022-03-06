@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:getx_demo/controllers/mainController.dart';
 import 'package:getx_demo/pages/navigation_page.dart';
 import 'package:getx_demo/widgets/grid_item_widget.dart';
 
-class SubjectsPage extends StatelessWidget {
+class SubjectsPage extends StatefulWidget {
+  @override
+  State<SubjectsPage> createState() => _SubjectsPageState();
+}
+
+class _SubjectsPageState extends State<SubjectsPage> {
+  final storage = GetStorage();
+  //
   final snackBar = GridItemWidget(subject: "1.1 Snackbar");
   final dialog = GridItemWidget(subject: "1.2 Dialog");
   final bottomSheet = GridItemWidget(subject: "1.3 BottomSheet");
@@ -14,8 +22,10 @@ class SubjectsPage extends StatelessWidget {
   final dependencyInjection = GridItemWidget(subject: "4. Dependency Injection\n4.1 Get.put & Get.find");
   final bindings = GridItemWidget(subject: "4.2 Bindings");
   final lazyPutNGetWidget = GridItemWidget(subject: "4.3 LazyPut & GetWidget");
+  final getStorageWidget = GridItemWidget(subject: "5. GetStorage");
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +86,10 @@ class SubjectsPage extends StatelessWidget {
       Get.toNamed("/cart-get-widget");
     };
 
+    getStorageWidget.tapAction = (){
+      Get.toNamed("/login");
+    };
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -97,6 +111,7 @@ class SubjectsPage extends StatelessWidget {
             dependencyInjection,
             bindings,
             lazyPutNGetWidget,
+            getStorageWidget,
           ],
         ),
       ),

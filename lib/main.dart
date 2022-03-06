@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:getx_demo/bindings/main_binding.dart';
 import 'package:getx_demo/pages/cart_get_widget_page.dart';
 import 'package:getx_demo/pages/cart_page.dart';
 import 'package:getx_demo/pages/dependency_page.dart';
+import 'package:getx_demo/pages/login_page.dart';
 import 'package:getx_demo/pages/navigation_page.dart';
 import 'package:getx_demo/pages/profile_page.dart';
 import 'package:getx_demo/pages/shop_page.dart';
 import 'package:getx_demo/pages/subjects_page.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
 }
 
@@ -20,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      smartManagement: SmartManagement.full, // full | keepFactory | onlyBuilder
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -36,6 +40,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/profile", page: () => Profile()),
         GetPage(name: "/dependency", page: () => DependencyPage()),
         GetPage(name: "/cart-get-widget", page: () => CartGetWidgetPage()),
+        GetPage(name: "/login", page: () => LoginPage()),
       ],
     );
   }

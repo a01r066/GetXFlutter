@@ -5,6 +5,8 @@ class MainController extends GetxController {
   var isLoggedIn = false.obs;
   var followers = 50.obs;
 
+  var email = "".obs;
+
   // GetX Workers
   @override
   void onInit() {
@@ -31,6 +33,10 @@ class MainController extends GetxController {
   // GetX method
   updateStatus(bool newStatus) {
     isLoggedIn.value = newStatus;
+  }
+
+  updateEmail(String newEmail){
+    email.value = newEmail;
   }
 
 // GetBuilder method
