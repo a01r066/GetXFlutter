@@ -23,6 +23,7 @@ class _SubjectsPageState extends State<SubjectsPage> {
   final bindings = GridItemWidget(subject: "4.2 Bindings");
   final lazyPutNGetWidget = GridItemWidget(subject: "4.3 LazyPut & GetWidget");
   final getStorageWidget = GridItemWidget(subject: "5. GetStorage");
+  final todoApp = GridItemWidget(subject: "Todo App");
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -90,6 +91,10 @@ class _SubjectsPageState extends State<SubjectsPage> {
       Get.toNamed("/login");
     };
 
+    todoApp.tapAction = (){
+      Get.offAllNamed("/todo");
+    };
+
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
@@ -112,6 +117,7 @@ class _SubjectsPageState extends State<SubjectsPage> {
             bindings,
             lazyPutNGetWidget,
             getStorageWidget,
+            todoApp,
           ],
         ),
       ),

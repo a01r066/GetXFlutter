@@ -10,6 +10,9 @@ import 'package:getx_demo/pages/navigation_page.dart';
 import 'package:getx_demo/pages/profile_page.dart';
 import 'package:getx_demo/pages/shop_page.dart';
 import 'package:getx_demo/pages/subjects_page.dart';
+import 'package:getx_demo/pages/todo_detail_page.dart';
+import 'package:getx_demo/pages/todo_edit_page.dart';
+import 'package:getx_demo/pages/todo_page.dart';
 
 void main() async {
   await GetStorage.init();
@@ -41,6 +44,8 @@ class MyApp extends StatelessWidget {
         GetPage(name: "/dependency", page: () => DependencyPage()),
         GetPage(name: "/cart-get-widget", page: () => CartGetWidgetPage()),
         GetPage(name: "/login", page: () => LoginPage()),
+        GetPage(name: "/todo", page: () => TodoPage()),
+        GetPage(name: "/todo_detail", page: () => TodoDetailPage()),
       ],
     );
   }
